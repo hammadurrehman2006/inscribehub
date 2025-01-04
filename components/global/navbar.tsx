@@ -1,9 +1,11 @@
 import { auth, signIn, signOut } from "@/auth"
 import { BadgePlus, LogOut } from "lucide-react";
+import Create from "../ui/create";
+import { ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image"
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { toast } from "@/hooks/use-toast";
 async function NavBar() {
     const session:any = await auth();
 
@@ -15,15 +17,7 @@ async function NavBar() {
                         <Image src="/iblogo.jpg" alt="Logo" width={100} height={100} className="rounded-full" />
                     </Link>
                     <div className="flex items-center gap-14">
-                                <Link href="/blog/create" onClick={()=>{
-                                    if(!session?.user){
-                                        toast({title:"Please log in to create a blog!"});
-                                    }
-                                }}>
-                                    <span className="max-sm:hidden">Create</span>
-                                    <BadgePlus className="sm:hidden size-6"/>
-
-                                </Link>
+                        <Create session={session}/>   
                         {session && session?.user ? (
                             <>
                                 <form action={async()=>{
@@ -53,6 +47,7 @@ async function NavBar() {
                         )}
                     </div>
                 </nav>
+                <ToastContainer/>
             </header>
         </>
     );
