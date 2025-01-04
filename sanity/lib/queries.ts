@@ -48,7 +48,7 @@ export const BLOG_Q = `*[_type == "blog" && _id == $id][0]{
   _id, views
   }`;
   export const AUTHOR_BY_GITHUB_ID = defineQuery(`
-    *[_type == "author" && _id == $id][0]{
+    *[_type == "author" && id == $id][0]{
         _id,
         id,
         name,
