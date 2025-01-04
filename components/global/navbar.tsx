@@ -27,7 +27,7 @@ async function NavBar() {
                                     <LogOut className="sm:hidden text-enerBorn size-6"/>
                                     </button>
                                 </form>
-                                <Link href={`/user/${session?.id}`}>
+                                <Link href={`/user/${session?.user?.id}`}>
                                     <Avatar className="size-10">
                                         <AvatarImage src={session?.user?.image} alt={session?.user?.name||""}/>
                                         <AvatarFallback>

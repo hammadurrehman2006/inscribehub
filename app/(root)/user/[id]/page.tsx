@@ -2,7 +2,7 @@ import { auth } from "@/auth"
 import { BlogCardSkeleton } from "@/components/ui/BlogCard";
 import UserBlogs from "@/components/ui/UserBlogs";
 import { client } from "@/sanity/lib/client";
-import { AUTHOR_BY_GITHUB_ID } from "@/sanity/lib/queries";
+import {Author_By_Id } from "@/sanity/lib/queries";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -10,7 +10,7 @@ export const experimental_ppr = true;
 const UserPage = async({params}:{params:Promise<{id:string}>}) => {
     const id = (await params).id;
     const session = await auth();
-    const user = await client.fetch(AUTHOR_BY_GITHUB_ID,{id,})
+    const user = await client.fetch(Author_By_Id,{id})
     if(!user) return notFound()
   return (
     <>
