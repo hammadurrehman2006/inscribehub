@@ -40,7 +40,7 @@ async function NavBar() {
                             <form action={async () =>{
                                 "use server"
                                 await signIn("github")}}>
-                                <button className="pr-16" type="submit">
+                                <button type="submit">
                                     LogIn
                                 </button>
                             </form>
