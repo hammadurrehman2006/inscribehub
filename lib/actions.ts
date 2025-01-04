@@ -35,7 +35,7 @@ export const createBlog = async (
       },
       author: {
         _type: "reference",
-        _ref: session?.id,
+        _ref: session?.user?.id,
       },
       blog,
     };
