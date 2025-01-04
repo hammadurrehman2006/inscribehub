@@ -8,10 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 const Create = ({session}:{session:Session}) => {
     const notify = () => {
         if(!session?.user){
-          toast.success("This is a success message!");
-          toast.error("This is an error message!");
-          toast.info("This is an info message!");
-          toast.warn("This is a warning message!");
+          toast.error("Please log in to create a blog!");
+
         }
       };
   return (
