@@ -1,30 +1,16 @@
 import { defineQuery } from "next-sanity";
 
-export const BLOG_QUERY = defineQuery(`*[
-  _type == "blog" &&
-  defined(slug.current) &&
-  (
-    !defined($search) ||
-    title match $search ||
-    category match $search ||
-    author->name match $search
-  )
-] | order(_createdAt desc) {
-  _id,
-  title,
-  slug,
-  _createdAt,
-  author -> {
+export const BLOG_QUERY = defineQuery(`*[_type == "blog" && defined(slug.current) && !defined($search) || title match $search || category match $search || author->name match $search] | order(_createdAt desc){
     _id,
-    name,
-    image,
-    bio
-  },
-  views,
-  description,
-  category,
-  image
-}`
+    title,
+    slug,
+    _createdAt,
+author -> {
+_id, name, image, bio},
+views,
+description,
+category,
+image    }`
 
 );
 export const Author_BLOGS_QUERY = defineQuery(`*[_type == "blog" && defined(slug.current) && author._ref == $id] | order(_createdAt desc){

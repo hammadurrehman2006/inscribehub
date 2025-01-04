@@ -24,8 +24,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
         <p className="text-30-semibold">{query ? `Search Results for ${query}` : 'All Blogs'}</p>
         <ul className="mt-6 card-grid">
         {posts?.length > 0 ? (
-            posts.map((post:BlogCardType) => (
-              <BlogCard key={post?._id} post={post} />
+            posts.map((post) => (
+              <BlogCard key={post?._id} post={post as unknown as BlogCardType} />
           ))):(<p className="no-results">No Blogs found</p>)}
         </ul>
       </section>
