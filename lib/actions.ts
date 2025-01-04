@@ -1,5 +1,4 @@
 "use server";
-
 import { auth } from "@/auth";
 import { parseServerAction } from "@/lib/utils";
 import slugify from "slugify";
@@ -19,7 +18,7 @@ export const createBlog = async (
     });
 
   const { title, description, category, link } = Object.fromEntries(
-    Array.from(form).filter(([key]) => key !== "pitch"),
+    Array.from(form).filter(([key]) => key !== "blog"),
   );
 
   const slug = slugify(title as string, { lower: true, strict: true });
