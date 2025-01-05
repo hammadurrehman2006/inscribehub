@@ -1,5 +1,5 @@
 import { auth, signIn, signOut } from "@/auth"
-import { BadgePlus, LogOut } from "lucide-react";
+import { BadgePlus, GithubIcon, GoalIcon, LogOut, Mail } from "lucide-react";
 import Create from "../ui/create";
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -37,13 +37,26 @@ async function NavBar() {
                                 </Link>
                             </>
                         ) : (
+                            <>
+                            <div className="gap-5">
                             <form action={async () =>{
                                 "use server"
                                 await signIn("github")}}>
                                 <button type="submit">
-                                    LogIn
+                                <span className="max-sm:hidden">Log In with Github</span>
+                                <GithubIcon className="sm:hidden text-enerBorn size-6"/>
                                 </button>
                             </form>
+                            <form action={async () =>{
+                                "use server"
+                                await signIn("google")}}>
+                                <button type="submit">
+                                <span className="max-sm:hidden">Log In with Google</span>
+                                <Image src="/google.png" alt="Google" width={24} height={24} className="sm:hidden"/>
+                                </button>
+                            </form>
+                        </div>
+                                    </>
                         )}
                     </div>
                 </nav>
