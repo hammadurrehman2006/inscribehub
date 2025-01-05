@@ -256,7 +256,7 @@ export type Author_BLOGS_QUERYResult = Array<{
 }>;
 // Variable: AUTHOR_BY_GITHUB_ID
 // Query: *[_type == "author" && id == $id][0]{        _id,        id,        name,        username,        email,        image,        bio    }
-export type AUTHOR_BY_GITHUB_IDResult = {
+export type AUTHOR_BY_PROVIDER_IDResult = {
   _id: string;
   id: number | null;
   name: string | null;
@@ -297,7 +297,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"blog\" && defined(slug.current) && !defined($search) || title match $search || category match $search || author->name match $search] | order(_createdAt desc){\n    _id,\n    title,\n    slug,\n    _createdAt,\nauthor -> {\n_id, name, image, bio},\nviews,\ndescription,\ncategory,\nimage    }": BLOG_QUERYResult;
     "*[_type == \"blog\" && defined(slug.current) && author._ref == $id] | order(_createdAt desc){\n    _id,\n    title,\n    slug,\n    _createdAt,\nauthor -> {\n_id, name, image, bio},\nviews,\ndescription,\ncategory,\nimage    }": Author_BLOGS_QUERYResult;
-    "\n    *[_type == \"author\" && id == $id][0]{\n        _id,\n        id,\n        name,\n        username,\n        email,\n        image,\n        bio\n    }\n    ": AUTHOR_BY_GITHUB_IDResult;
+    "\n    *[_type == \"author\" && id == $id][0]{\n        _id,\n        id,\n        name,\n        username,\n        email,\n        image,\n        bio\n    }\n    ": AUTHOR_BY_PROVIDER_IDResult;
     "*[_type == \"playlist\" && slug.current == $slug][0]{\n  _id,\n  title,\n  slug,\n  select[]->{\n    _id,\n    _createdAt,\n    title,\n    slug,\n    author->{\n      _id,\n      name,\n      slug,\n      image,\n      bio\n    },\n    views,\n    description,\n    category,\n    image,\n    blog\n  }\n}": PLAYLIST_BY_SLUG_QUERYResult;
   }
 }
