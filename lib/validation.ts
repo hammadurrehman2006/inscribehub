@@ -8,11 +8,16 @@ export const formSchema = z.object({
     try {
       const res = await fetch(url, { method: "HEAD" });
       const contentType = res.headers.get("content-type") || "";
-      const isImage = contentType.match(/^image\/|\.jpg|\.png|\.jpeg|\.webp|\.gif|\.svg|\.bmp|\.tiff|\.ico|\.cur$/i);
-      return Boolean(isImage);
-  } catch {
+      const urlPath = new URL(url).pathname;
+      const isImage = Boolean(
+        contentType.match(/^image\//i) || 
+        urlPath.match(/\.(jpg|png|jpeg|webp|gif|svg|bmp|tiff|ico|cur)$/i)
+      );
+      
+      return isImage;
+    } catch {
       return false;
-  }
+    }
 }),
 blog: z.string().min(10)
 });
