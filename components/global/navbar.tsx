@@ -14,7 +14,7 @@ async function NavBar() {
             <header className="px-5 py-3 shadow-sm font-work-sans">
                 <nav className="flex justify-between items-center">
                     <Link href="/">
-                        <Image src="/logo.png" alt="Logo" width={100} height={100} className="rounded-full" />
+                        <Image src="/logo.png" alt="Logo" width={200} height={200} />
                     </Link>
                     <div className="flex items-center gap-14">
                         <Create session={session}/>   
