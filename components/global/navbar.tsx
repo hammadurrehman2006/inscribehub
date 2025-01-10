@@ -14,7 +14,7 @@ async function NavBar() {
             <header className="px-5 py-3 shadow-sm font-work-sans">
                 <nav className="flex justify-between items-center">
                     <Link href="/">
-                        <Image src="/iblogo.jpg" alt="Logo" width={100} height={100} className="rounded-full" />
+                        <Image src="/logo.png" alt="Logo" width={100} height={100} className="rounded-full" />
                     </Link>
                     <div className="flex items-center gap-14">
                         <Create session={session}/>   
@@ -52,7 +52,7 @@ async function NavBar() {
                                 await signIn("google")}}>
                                 <button type="submit">
                                 <span className="max-sm:hidden">Log In with Google</span>
-                                <Image src="/google.png" alt="Google" width={24} height={24} className="sm:hidden"/>
+                                <Image src="/google.svg" alt="Google" width={24} height={24} className="sm:hidden"/>
                                 </button>
                             </form>
                         </div>
